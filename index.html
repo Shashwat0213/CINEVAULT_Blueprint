@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MCU Tracker — Master Blueprint</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: #0a0e17;
+  color: #e0e7f5;
+  line-height: 1.7;
+  padding: 20px;
+  font-size: 15px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px 24px;
+  background: #111827;
+  border: 1px solid #1e3a5f;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+  font-size: 28px;
+  color: #00e5ff;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+h2 {
+  font-size: 22px;
+  color: #22d3ee;
+  margin-top: 32px;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #1e3a5f;
+}
+
+h3 {
+  font-size: 17px;
+  color: #a855f7;
+  margin-top: 22px;
+  margin-bottom: 10px;
+}
+
+h4 {
+  font-size: 15px;
+  color: #ffd54a;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+p {
+  margin-bottom: 12px;
+  color: #cbd5e1;
+}
+
+ul, ol {
+  margin: 10px 0 14px 24px;
+  color: #cbd5e1;
+}
+
+li {
+  margin-bottom: 6px;
+}
+
+code {
+  background: #0a0e17;
+  color: #22d3ee;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+}
+
+pre {
+  background: #0a0e17;
+  color: #a5f3fc;
+  padding: 14px;
+  border-radius: 10px;
+  overflow-x: auto;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  line-height: 1.6;
+  border: 1px solid #1e3a5f;
+  margin: 12px 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.header {
+  text-align: center;
+  padding: 20px 0;
+  border-bottom: 2px solid #1e3a5f;
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  color: #94a3b8;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.toc {
+  background: #0a0e17;
+  border: 1px solid #1e3a5f;
+  border-radius: 12px;
+  padding: 18px 22px;
+  margin: 20px 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  color: #00e5ff;
+}
+
+.toc ol {
+  margin-left: 20px;
+}
+
+.toc a {
+  color: #22d3ee;
+  text-decoration: none;
+}
+
+.toc a:hover {
+  color: #a855f7;
+  text-decoration: underline;
+}
+
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-left: 6px;
+}
+
+.badge-ok { background: #10b981; color: #000; }
+.badge-warn { background: #f59e0b; color: #000; }
+.badge-error { background: #ef4444; color: #fff; }
+.badge-info { background: #3b82f6; color: #fff; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0;
+  font-size: 14px;
+  overflow-x: auto;
+  display: block;
+}
+
+table thead {
+  background: #0a0e17;
+}
+
+table th {
+  text-align: left;
+  padding: 10px 12px;
+  color: #22d3ee;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #1e3a5f;
+  white-space: nowrap;
+}
+
+table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #1e3a5f;
+  color: #cbd5e1;
+  vertical-align: top;
+}
+
+table tr:last-child td {
+  border-bottom: none;
+}
+
+.alert {
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin: 14px 0;
+  border-left: 4px solid;
+  font-size: 14px;
+}
+
+.alert-danger {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: #ef4444;
+  color: #fecaca;
+}
+
+.alert-warn {
+  background: rgba(245, 158, 11, 0.1);
+  border-color: #f59e0b;
+  color: #fde68a;
+}
+
+.alert-ok {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: #10b981;
+  color: #a7f3d0;
+}
+
+.alert-info {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: #3b82f6;
+  color: #bfdbfe;
+}
+
+.section {
+  margin-bottom: 32px;
+  scroll-margin-top: 20px;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #1e3a5f, transparent);
+  margin: 30px 0;
+}
+
+.footer {
+  text-align: center;
+  padding: 30px 10px 10px;
+  border-top: 1px solid #1e3a5f;
+  margin-top: 30px;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.kv {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 8px 16px;
+  margin: 10px 0;
+  padding: 12px 16px;
+  background: #0a0e17;
+  border-radius: 10px;
+  border: 1px solid #1e3a5f;
+}
+
+.kv strong {
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+.kv span {
+  color: #e0e7f5;
+  font-size: 14px;
+  word-break: break-all;
+}
+
+@media (max-width: 600px) {
+  body { padding: 10px; font-size: 14px; }
+  .container { padding: 18px 14px; }
+  h1 { font-size: 22px; }
+  h2 { font-size: 18px; }
+  h3 { font-size: 15px; }
+  pre { font-size: 11px; padding: 10px; }
+  .kv { grid-template-columns: 1fr; gap: 4px; }
+  .kv strong { font-size: 11px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ============ HEADER ============ -->
+  <div class="header">
+    <h1>🎯 MCU TRACKER — MASTER BLUEPRINT</h1>
+    <p class="subtitle">Complete A-to-Z Reference · Last Updated: 12 Oct 2026</p>
+  </div>
+
+  <!-- ============ TOC ============ -->
+  <div class="toc">
+    <h3>📑 Table of Contents</h3>
+    <ol>
+      <li><a href="#overview">Project Overview</a></li>
+      <li><a href="#structure">File Structure</a></li>
+      <li><a href="#firebase">Firebase Setup</a></li>
+      <li><a href="#auth-users">Auth Users</a></li>
+      <li><a href="#theme-system">Theme System</a></li>
+      <li><a href="#firestore">Firestore Collections</a></li>
+      <li><a href="#auth-flow">Auth Flow</a></li>
+      <li><a href="#admin-panel">Admin Panel</a></li>
+      <li><a href="#movies-seed">Movies Auto-Seed</a></li>
+      <li><a href="#doomsday">Doomsday Countdown</a></li>
+      <li><a href="#loading">Loading Screen</a></li>
+      <li><a href="#issues">Current Issues</a></li>
+      <li><a href="#status">Status Summary</a></li>
+      <li><a href="#next-steps">Next Steps</a></li>
+      <li><a href="#notes">Notes for Assistant</a></li>
+    </ol>
+  </div>
+
+  <!-- ============ 1. OVERVIEW ============ -->
+  <div class="section" id="overview">
+    <h2>1. 📌 Project Overview</h2>
+    <div class="kv">
+      <strong>Owner</strong><span>Shashwat Kumar (GitHub: shashwat0213)</span>
+      <strong>Live URL</strong><span>https://shashwat0213.github.io/</span>
+      <strong>Type</strong><span>Marvel Cinematic Universe Watch Tracker</span>
+      <strong>Tech Stack</strong><span>HTML5, CSS3, Vanilla JS (ES Modules), Firebase 10 (CDN imports)</span>
+      <strong>Hosting</strong><span>GitHub Pages (root folder)</span>
+      <strong>Repo</strong><span>shashwat0213.github.io</span>
+    </div>
+  </div>
+
+  <!-- ============ 2. FILE STRUCTURE ============ -->
+  <div class="section" id="structure">
+    <h2>2. 📁 File Structure</h2>
+    <pre>shashwat0213.github.io/
+├── index.html              (main page — HTML only)
+├── blueprint.html          (this file — master blueprint)
+├── css/
+│   ├── style.css          (base UI styles)
+│   ├── themes.css         (7 themes — CSS variables only)
+│   └── animations.css     (animations + doomsday countdown)
+├── js/
+│   ├── firebase.js        (Firebase init + global helpers)
+│   ├── theme.js           (theme switcher + dark/light + sound)
+│   ├── auth.js            (Email/Password + Google Sign-In)
+│   ├── movies.js          (Firestore load + auto-seed 51 movies)
+│   ├── tracker.js         (watched/favorites — local + Firestore)
+│   └── admin.js           (Master Admin Panel — TMDB + CRUD)
+└── README.md              (setup guide)</pre>
+
+    <div class="alert alert-warn">
+      <strong>⚠️ IMPORTANT:</strong> JS file ka naam <code>theme.js</code> (singular) hai, CSS file ka naam <code>themes.css</code> (plural) hai. Ye standard convention hai — don't mix up.
+    </div>
+  </div>
+
+  <!-- ============ 3. FIREBASE ============ -->
+  <div class="section" id="firebase">
+    <h2>3. 🔥 Firebase Setup</h2>
+
+    <h3>Firebase Project Details</h3>
+    <div class="kv">
+      <strong>Project ID</strong><span>marvel-mcu-tracker</span>
+      <strong>Auth Domain</strong><span>marvel-mcu-tracker.firebaseapp.com</span>
+      <strong>Storage Bucket</strong><span>marvel-mcu-tracker.firebasestorage.app</span>
+      <strong>Messaging Sender ID</strong><span>353104751639</span>
+      <strong>App ID</strong><span>1:353104751639:web:9f5e43501ead4bbedd4052</span>
+      <strong>Measurement ID</strong><span>G-5DJXGHN0NV</span>
+      <strong>API Key</strong><span>AIzaSyAxiho1OLRry1mU8CRm6lQirUGQCVlNDWg</span>
+    </div>
+
+    <h3>Firestore Security Rules (Deployed)</h3>
+    <pre>rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() { return request.auth != null; }
+    function isAdmin() {
+      return isSignedIn() &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    function isOwner(uid) { return isSignedIn() && request.auth.uid == uid; }
+
+    match /users/{uid} {
+      allow read: if isSignedIn();
+      allow create: if isOwner(uid);
+      allow update: if isAdmin() ||
+        (isOwner(uid) &&
+          !(request.resource.data.diff(resource.data).affectedKeys().hasAny(['role'])));
+      allow delete: if isAdmin();
+    }
+    match /users/{uid}/private/{docId} {
+      allow read, write: if isOwner(uid) || isAdmin();
+    }
+    match /movies/{movieId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    match /timers/{timerId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    match /logs/{logId} {
+      allow read, write: if isAdmin();
+    }
+  }
+}</pre>
+
+    <h3>Authentication Setup</h3>
+    <ul>
+      <li>✅ <strong>Email/Password</strong> — Enabled</li>
+      <li>✅ <strong>Google</strong> — Enabled</li>
+      <li>✅ <strong>Authorized Domains:</strong>
+        <ul>
+          <li>localhost</li>
+          <li>marvel-mcu-tracker.firebaseapp.com</li>
+          <li>marvel-mcu-tracker.web.app</li>
+          <li>shashwat0213.github.io</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>Google Cloud Console (OAuth)</h3>
+    <ul>
+      <li>✅ <strong>Authorized JS Origins:</strong>
+        <ul>
+          <li>http://localhost</li>
+          <li>http://localhost:5000</li>
+          <li>https://marvel-mcu-tracker.firebaseapp.com</li>
+        </ul>
+      </li>
+      <li>✅ <strong>Authorized Redirect URI:</strong>
+        <ul>
+          <li>https://marvel-mcu-tracker.firebaseapp.com/__/auth/handler</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>Admin Account</h3>
+    <div class="kv">
+      <strong>Admin Email</strong><span>mcutrackersupport@gmail.com</span>
+      <strong>Role Set In</strong><span>Firestore → users/{uid}.role = "admin"</span>
+    </div>
+  </div>
+
+  <!-- ============ 4. AUTH USERS ============ -->
+  <div class="section" id="auth-users">
+    <h2>4. 👤 Firebase Auth Users (Current)</h2>
+    <table>
+      <thead>
+        <tr><th>#</th><th>Email</th><th>Provider</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>sahil06raj0@...</td><td>Google</td><td><span class="badge badge-ok">Active</span></td></tr>
+        <tr><td>2</td><td>akOus41r@...</td><td>Google</td><td><span class="badge badge-ok">Active</span></td></tr>
+        <tr><td>3</td><td>s.aakkil.p@...</td><td>Google</td><td><span class="badge badge-ok">Active</span></td></tr>
+        <tr><td>4</td><td><strong>mcutrackersupport@gmail.com</strong></td><td>Email</td><td><span class="badge badge-error">Disabled</span></td></tr>
+        <tr><td>5</td><td>shaha0jash@...</td><td>Email</td><td><span class="badge badge-ok">Active</span></td></tr>
+        <tr><td>6</td><td>kumarshas@...</td><td>Google</td><td><span class="badge badge-ok">Active</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="alert alert-danger">
+      <strong>🚨 ATTENTION:</strong> User #4 (mcutrackersupport@gmail.com) <strong>DISABLED</strong> hai — isko enable karna hoga Firebase Console → Authentication → Users se, ya naya user banana hoga.
+    </div>
+  </div>
+
+  <!-- ============ 5. THEME SYSTEM ============ -->
+  <div class="section" id="theme-system">
+    <h2>5. 🎨 Theme System</h2>
+
+    <h3>7 Themes (CSS Variables)</h3>
+    <table>
+      <thead>
+        <tr><th>#</th><th>Theme</th><th>Colors</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td><strong>Cosmos</strong> (default)</td><td>Deep Purple + Cyan</td></tr>
+        <tr><td>2</td><td><strong>Arc Reactor</strong></td><td>Iron Man Cyan Glow</td></tr>
+        <tr><td>3</td><td><strong>Inferno</strong></td><td>Red + Orange + Gold</td></tr>
+        <tr><td>4</td><td><strong>Vibranium</strong></td><td>Wakanda Purple + Teal</td></tr>
+        <tr><td>5</td><td><strong>Bifrost</strong></td><td>Thor Rainbow (Blue + Turquoise)</td></tr>
+        <tr><td>6</td><td><strong>Doomsday</strong></td><td>Toxic Green</td></tr>
+        <tr><td>7</td><td><strong>Noir</strong></td><td>Black + White + Cyan</td></tr>
+      </tbody>
+    </table>
+
+    <h3>How Themes Work</h3>
+    <ul>
+      <li>Buttons in HTML: <code>&lt;button data-hero-theme="cosmos"&gt;🌌 Cosmos&lt;/button&gt;</code></li>
+      <li>JS adds class: <code>body.theme-cosmos</code>, <code>body.theme-inferno</code>, etc.</li>
+      <li>CSS defines CSS variables per theme: <code>body.theme-inferno { --primary: #ff5500; ... }</code></li>
+      <li>Hero background per theme (image URLs from TMDB)</li>
+    </ul>
+
+    <h3>Dark/Light Toggle</h3>
+    <ul>
+      <li>Button: <code>#themeBtn</code></li>
+      <li>Adds class: <code>body.light-mode</code></li>
+      <li><strong>Problem:</strong> Light mode CSS mein layout toot raha hai</li>
+    </ul>
+  </div>
+
+  <!-- ============ 6. FIRESTORE ============ -->
+  <div class="section" id="firestore">
+    <h2>6. 💾 Firestore Collections</h2>
+
+    <h3>movies (Public Read, Admin Write)</h3>
+    <pre>{
+  id: "iron-man",
+  title: "Iron Man",
+  type: "movie" | "series" | "special",
+  year: 2008,
+  releaseDate: "2008-05-02",
+  rating: 7.9,
+  phase: "Phase 1 • Infinity Saga",
+  importance: "Must Watch" | "Important" | "Optional",
+  timelineSlot: 3,
+  poster: "https://image.tmdb.org/t/p/w500/78lPtwv72eTNqFW9COBYI0dWDJa.jpg",
+  backdrop: "...",
+  trailer: "...",
+  downloadUrl: "...",
+  watchUrl: "...",
+  description: "...",
+  cast: "...",
+  genres: "...",
+  status: "published" | "draft",
+  updatedAt: timestamp
+}</pre>
+
+    <h3>users (Auth-based)</h3>
+    <pre>{
+  uid: "...",
+  email: "...",
+  displayName: "...",
+  photoURL: "...",
+  role: "admin" | "user",
+  createdAt: timestamp,
+  updatedAt: timestamp
+}</pre>
+
+    <h3>users/{uid}/private/tracker</h3>
+    <pre>{
+  watched: { "iron-man": true, ... },
+  favorites: { "iron-man": true, ... },
+  updatedAt: timestamp
+}</pre>
+
+    <h3>timers (Countdown)</h3>
+    <pre>{
+  id: "avengers-doomsday",
+  title: "Avengers: Doomsday",
+  targetDate: "2026-12-18T00:00:00.000Z",
+  poster: "...",
+  subtitle: "...",
+  updatedAt: timestamp
+}</pre>
+
+    <h3>logs (Admin Activity)</h3>
+    <pre>{
+  action: "...",
+  details: "...",
+  by: "...",
+  byEmail: "...",
+  timestamp: timestamp
+}</pre>
+  </div>
+
+  <!-- ============ 7. AUTH FLOW ============ -->
+  <div class="section" id="auth-flow">
+    <h2>7. 🔐 Auth Flow (Current Working Code)</h2>
+
+    <h3>Email/Password</h3>
+    <ul>
+      <li>Signup: <code>createUserWithEmailAndPassword</code> → save profile to Firestore</li>
+      <li>Login: <code>signInWithEmailAndPassword</code> → load tracker state</li>
+      <li>Logout: <code>signOut</code></li>
+      <li>Persistence: <code>browserLocalPersistence</code></li>
+    </ul>
+
+    <h3>Google Sign-In ⚠️</h3>
+    <div class="alert alert-warn">
+      <strong>Current Code:</strong> <code>signInWithPopup</code> (mobile + desktop dono pe)<br>
+      <strong>Problem:</strong> Mobile Chrome mein popup khulta hai → account select → band ho jata → login nahi hota<br>
+      <strong>Reason:</strong> Mobile Chrome popup block karta hai
+    </div>
+
+    <h4>Try Kiya Tha:</h4>
+    <ul>
+      <li><code>signInWithRedirect</code> (mobile ke liye) → <span class="badge badge-error">FAILED</span> — "missing initial state" error</li>
+      <li><code>signInWithPopup</code> + popup allow → <span class="badge badge-ok">WORKING</span></li>
+    </ul>
+
+    <h4>Final Fix Code:</h4>
+    <pre>async function handleGoogleLogin() {
+  const originalHTML = googleBtn.innerHTML;
+  googleBtn.disabled = true;
+  googleBtn.innerHTML = "Signing in…";
+  
+  const provider = new GoogleAuthProvider();
+  provider.setCustomParameters({ prompt: "select_account" });
+  
+  try {
+    const result = await signInWithPopup(auth, provider);
+    if (result.user) {
+      await saveUserProfile(result.user);
+      await updateAuthUI(result.user);
+      closeAuthModal();
+      window.showToast("✓ Logged in with Google!", "ok");
+    }
+  } catch (err) {
+    console.error("Google login error:", err);
+  } finally {
+    googleBtn.disabled = false;
+    googleBtn.innerHTML = originalHTML;
+  }
+}</pre>
+  </div>
+
+  <!-- ============ 8. ADMIN PANEL ============ -->
+  <div class="section" id="admin-panel">
+    <h2>8. 🛡️ Admin Panel</h2>
+
+    <h3>Access</h3>
+    <ul>
+      <li>Top-right 🛡️ button dikhta hai sirf admin ko</li>
+      <li><code>mcutrackersupport@gmail.com</code> se login karne par automatically admin</li>
+      <li>Baaki users ko Firestore mein <code>role: "admin"</code> set karna hoga</li>
+    </ul>
+
+    <h3>Tabs</h3>
+    <table>
+      <thead>
+        <tr><th>Tab</th><th>Function</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>📊 Dashboard</td><td>Users count, Movies count, Watched/Favorites stats, Top Watched</td></tr>
+        <tr><td>➕ Add Movie</td><td>TMDB auto-fill + manual entry</td></tr>
+        <tr><td>🎬 Catalog</td><td>Search, Edit, Delete movies</td></tr>
+        <tr><td>⏱️ Timers</td><td>Countdown set karo</td></tr>
+        <tr><td>👥 Users</td><td>Promote/Demote admin</td></tr>
+      </tbody>
+    </table>
+
+    <h3>TMDB Search ⚠️</h3>
+    <div class="alert alert-danger">
+      <strong>Problem:</strong> TMDB search kaam nahi kar raha<br>
+      <strong>Reason:</strong> API key issue ya CORS block<br>
+      <strong>Alternative:</strong> Manually poster URL paste karo
+    </div>
+
+    <h4>Poster URL Format (IMPORTANT)</h4>
+    <pre>✅ https://image.tmdb.org/t/p/w500/78lPtwv72eTNqFW9COBYI0dWDJa.jpg
+❌ Google Images URL (CORS block)
+❌ Wikipedia (mostly CORS block)
+❌ Pinterest (CORS block)</pre>
+  </div>
+
+  <!-- ============ 9. MOVIES SEED ============ -->
+  <div class="section" id="movies-seed">
+    <h2>9. 🎞️ Movies Auto-Seed</h2>
+
+    <p><code>js/movies.js</code> mein <code>DEFAULT_MOVIES</code> array hai jismein <strong>51 MCU movies/series</strong> hain Phase 1-6 tak, sabke posters <strong>TMDB URLs</strong> se.</p>
+
+    <h3>Seed Logic</h3>
+    <pre>async function seedIfEmpty() {
+  const snap = await getDocs(collection(db, "movies"));
+  if (snap.size > 0) return;  // already has movies
+  for (const movie of DEFAULT_MOVIES) {
+    await setDoc(doc(db, "movies", movie.id), {
+      ...movie,
+      status: "published"
+    });
+  }
+}</pre>
+
+    <p><strong>Auto-run:</strong> Website load hote hi agar <code>movies</code> collection khali hai toh seed ho jata hai.</p>
+
+    <div class="alert alert-warn">
+      <strong>⚠️ Problem:</strong> Agar user admin nahi hai toh write fail hoga → seed nahi chalega.
+    </div>
+  </div>
+
+  <!-- ============ 10. DOOMSDAY ============ -->
+  <div class="section" id="doomsday">
+    <h2>10. ⏱️ Doomsday Countdown</h2>
+    <ul>
+      <li><strong>Target:</strong> 18 December 2026, 00:00 IST</li>
+      <li><strong>Location:</strong> Hero section ke neeche green box</li>
+      <li><strong>Elements:</strong> <code>#doomsdayDays</code>, <code>#doomsdayHours</code>, <code>#doomsdayMinutes</code>, <code>#doomsdaySeconds</code></li>
+      <li><strong>CSS:</strong> <code>animations.css</code> mein <code>.doomsday-feature</code></li>
+      <li><strong>JS:</strong> <code>theme.js</code> mein <code>setInterval</code> tick function</li>
+    </ul>
+    <p><span class="badge badge-ok">Working</span></p>
+  </div>
+
+  <!-- ============ 11. LOADING ============ -->
+  <div class="section" id="loading">
+    <h2>11. 🎥 Loading Screen</h2>
+    <ul>
+      <li>Custom CSS <code>index.html</code> ke <code>&lt;style&gt;</code> block mein</li>
+      <li><strong>Elements:</strong> 3 rotating rings + lightning ⚡ + title + loading bar + particles</li>
+      <li><strong>Duration:</strong> 1.8 seconds then auto-hide</li>
+      <li><strong>Animations:</strong> <code>mcuSpin</code>, <code>mcuPulse</code>, <code>mcuTextPulse</code>, <code>mcuBar</code>, <code>mcuParticle</code></li>
+    </ul>
+    <p><span class="badge badge-ok">Working</span></p>
+  </div>
+
+  <!-- ============ 12. ISSUES ============ -->
+  <div class="section" id="issues">
+    <h2>12. 🐛 Current Issues (Pending)</h2>
+
+    <div class="alert alert-danger">
+      <h4>🚨 Priority 1: Layout Toot Raha Hai Theme Change Karne Pe</h4>
+      <p>Theme button dabane pe <strong>poori website ka layout toot jata hai</strong>. Kuch CSS rules conflict kar rahe hain.</p>
+      <p><strong>Fix Needed:</strong> Clean theme CSS, no layout override</p>
+    </div>
+
+    <div class="alert alert-danger">
+      <h4>🚨 Priority 2: TMDB Search Kaam Nahi Kar Raha</h4>
+      <p>Admin panel → Add Movie → TMDB Search → error</p>
+      <p><strong>Reason:</strong> API key ya CORS</p>
+      <p><strong>Workaround:</strong> Manually poster URL paste karo</p>
+    </div>
+
+    <div class="alert alert-danger">
+      <h4>🚨 Priority 3: Dark/Light Toggle Layout Todta Hai</h4>
+      <p><code>body.light-mode</code> add hone pe cards/panels overlap</p>
+      <p><strong>Reason:</strong> <code>themes.css</code> aur <code>style.css</code> mein conflict</p>
+    </div>
+
+    <div class="alert alert-warn">
+      <h4>⚠️ Priority 4: Google Sign-In Mobile Pe Unstable</h4>
+      <p>Popup band ho jata hai. Redirect flow "missing initial state" error deta hai.</p>
+      <p><strong>Current status:</strong> Popup allow karne pe kaam karta hai</p>
+    </div>
+
+    <div class="alert alert-warn">
+      <h4>⚠️ Priority 5: mcutrackersupport@gmail.com Disabled</h4>
+      <p>Firebase Auth mein disabled hai.</p>
+      <p><strong>Fix:</strong> Enable karo ya naya user banao</p>
+    </div>
+
+    <div class="alert alert-info">
+      <h4>🎯 Priority 6: Movies Seed Nahi Ho Rahi</h4>
+      <p>Firestore khali hai. Admin user zaroori hai seed ke liye.</p>
+      <p><strong>Fix:</strong> Pehle admin login → Firestore <code>users/{uid}.role = "admin"</code> → website reload</p>
+    </div>
+  </div>
+
+  <!-- ============ 13. STATUS ============ -->
+  <div class="section" id="status">
+    <h2>13. 📊 Current State Summary</h2>
+    <table>
+      <thead>
+        <tr><th>Feature</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>HTML Structure</td><td><span class="badge badge-ok">Working</span></td></tr>
+        <tr><td>Base CSS (style.css)</td><td><span class="badge badge-ok">Working</span></td></tr>
+        <tr><td>Loading Screen</td><td><span class="badge badge-ok">Working</span></td></tr>
+        <tr><td>Firebase Init</td><td><span class="badge badge-ok">Working</span></td></tr>
+        <tr><td>Email/Password Login</td><td><span class="badge badge-ok">Working</span></td></tr>
+        <tr><td>Google Login</td><td><span class="badge badge-warn">Flaky (mobile)</span></td></tr>
+        <tr><td>Theme Switch (Basic)</td><td><span class="badge badge-warn">Layout breaks</span></td></tr>
+        <tr><td>Dark/Light Toggle</td><td><span class="badge badge-error">Layout breaks</span></td></tr>
+        <tr><td>Sound System</td><td><span class="badge badge-warn">Code added, not tested</span></td></tr>
+        <tr><td>Doomsday Timer</td><td><span class="badge badge-ok">Working</span></td></tr>
+        <tr><td>Admin Panel UI</td><td><span class="badge badge-ok">Working</span></td></tr>
+        <tr><td>Admin Auth Check</td><td><span class="badge badge-ok">Working</span></td></tr>
+        <tr><td>TMDB Search</td><td><span class="badge badge-error">Not working</span></td></tr>
+        <tr><td>Movies Seed</td><td><span class="badge badge-error">Not running (no admin)</span></td></tr>
+        <tr><td>Poster Manual Add</td><td><span class="badge badge-ok">Working</span></td></tr>
+        <tr><td>Watched/Favorites</td><td><span class="badge badge-ok">Code exists</span></td></tr>
+        <tr><td>Firestore Sync</td><td><span class="badge badge-ok">Code exists</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ============ 14. NEXT STEPS ============ -->
+  <div class="section" id="next-steps">
+    <h2>14. 🎯 Next Chat Mein Kya Karna Hai</h2>
+    <ol>
+      <li><strong>Layout fix karo</strong> — <code>themes.css</code> clean karo (koi layout override nahi)</li>
+      <li><strong>TMDB search debug karo</strong> — ya manual poster URL flow strengthen karo</li>
+      <li><strong>Dark/Light toggle fix karo</strong> — sirf colors change, layout nahi</li>
+      <li><strong>Admin confirm karo</strong> — mcutrackersupport@gmail.com enable ya naya user</li>
+      <li><strong>Movies seed karo</strong> — admin banne ke baad auto-seed trigger karo</li>
+      <li><strong>Google login final fix</strong> — mobile + desktop dono reliable</li>
+    </ol>
+  </div>
+
+  <!-- ============ 15. NOTES ============ -->
+  <div class="section" id="notes">
+    <h2>15. 📝 Notes for Next Assistant</h2>
+
+    <h3>User Preferences</h3>
+    <ul>
+      <li>Hindi + English mix mein baat karta hai</li>
+      <li>Mobile pe kaam karta hai (GitHub web editor)</li>
+      <li>Screenshot bhejne mein issue hai — <strong>text answers prefer karo</strong></li>
+      <li>Patient hai par frustrated ho chuka hai 4-5 din ke struggle se</li>
+      <li><strong>Simple language use karo</strong></li>
+    </ul>
+
+    <h3>Technical Constraints</h3>
+    <ul>
+      <li>Mobile only (no laptop/PC regular access)</li>
+      <li>GitHub web editor se files edit karta hai</li>
+      <li>Firebase Console + Google Cloud Console access hai</li>
+      <li>TMDB API key le sakta hai (agar guide karo)</li>
+    </ul>
+
+    <h3>Code Style Required</h3>
+    <ul>
+      <li><strong>Single-purpose files</strong> — HTML, CSS, JS alag</li>
+      <li><strong>No hardcoded movies</strong> — sab Firestore se</li>
+      <li><strong>No duplicate admin systems</strong> — ek admin panel</li>
+      <li><strong>No conflicting auth</strong> — ek <code>auth</code> instance</li>
+      <li>Comments English mein, user-facing text Hindi+English</li>
+    </ul>
+
+    <h3>Known Working Code</h3>
+    <ul>
+      <li><code>js/firebase.js</code> — single global init, <code>window.__mcuAuth</code>, <code>window.__mcuDb</code></li>
+      <li><code>js/auth.js</code> — Email + Google popup flow working</li>
+      <li><code>js/movies.js</code> — seed + load working (agar admin ho)</li>
+      <li><code>js/admin.js</code> — Master Admin Panel with TMDB search</li>
+    </ul>
+
+    <h3>Tech Debt (Cleanup Needed)</h3>
+    <ul>
+      <li>Duplicate theme files? — Check <code>css/themes.css</code> vs <code>css/theme.css</code></li>
+      <li>Old admin systems? — V4/V9/V10/V11/V13/V15 admin code hataya gaya</li>
+      <li><code>js/theme.js</code> vs <code>js/themes.js</code> — singular confirm karo</li>
+      <li><code>window.__mcuWatched</code> / <code>__mcuFavorites</code> — global tracker state</li>
+      <li><code>localStorage</code> keys: <code>mcuWatched</code>, <code>mcuFavorites</code>, <code>mcuSound</code>, <code>mcuTheme</code>, <code>mcuHeroTheme</code>, <code>mcuV3Name</code></li>
+    </ul>
+
+    <h3>Setup Checklist (For Next Chat)</h3>
+    <ul>
+      <li>☐ Firebase project ready: marvel-mcu-tracker</li>
+      <li>☐ Firestore rules deployed</li>
+      <li>☐ Auth: Email/Password + Google enabled</li>
+      <li>☐ Authorized domains: shashwat0213.github.io added</li>
+      <li>☐ Google Cloud: Redirect URI + JS origins set</li>
+      <li>☐ Admin user: mcutrackersupport@gmail.com (enable karna hai)</li>
+      <li>☐ Firestore users/{uid}.role = "admin" set</li>
+      <li>☐ Files: index.html, css/*.css, js/*.js</li>
+      <li>☐ js/theme.js (not themes.js)</li>
+      <li>☐ css/themes.css (plural)</li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ============ FOOTER ============ -->
+  <div class="footer">
+    <p><strong>MCU Tracker Master Blueprint</strong></p>
+    <p>Ye file next chat mein paste kar dena. Naya assistant turant samajh jayega.</p>
+    <p style="margin-top:10px;color:#22d3ee;">⚡ Powered by Shashwat</p>
+  </div>
+
+</div>
+
+</body>
+</html>
