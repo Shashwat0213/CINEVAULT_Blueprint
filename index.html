@@ -20,7 +20,7 @@ body{
 /* HEADER */
 .bp-header{
   text-align:center;
-  margin-bottom:40px;
+  margin-bottom:30px;
   padding:30px 20px;
   background:linear-gradient(135deg,rgba(255,184,0,.1),rgba(168,85,247,.1));
   border:1px solid rgba(255,184,0,.3);
@@ -63,13 +63,13 @@ body{
   letter-spacing:1px;
 }
 
-/* OVERALL PROGRESS */
+/* PROGRESS */
 .overall-progress{
   background:rgba(255,255,255,.03);
   border:1px solid rgba(255,255,255,.08);
   border-radius:20px;
   padding:24px;
-  margin-bottom:30px;
+  margin-bottom:20px;
 }
 .overall-progress h2{
   font-family:"Bebas Neue",sans-serif;
@@ -130,219 +130,62 @@ body{
   font-weight:700;
 }
 
-/* PHASE SECTION */
-.phase{
+/* ACTION BAR */
+.action-bar{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:20px;
+  padding:14px 18px;
   background:rgba(255,255,255,.03);
   border:1px solid rgba(255,255,255,.08);
-  border-radius:20px;
-  padding:0;
-  margin-bottom:20px;
-  overflow:hidden;
-  transition:.3s;
-}
-.phase.done{border-color:rgba(34,197,94,.4);}
-.phase.current{border-color:rgba(255,184,0,.4);}
-.phase-header{
-  padding:20px 24px;
-  cursor:pointer;
-  display:flex;
-  justify-content:space-between;
+  border-radius:16px;
   align-items:center;
-  gap:14px;
-  transition:.2s;
-  user-select:none;
 }
-.phase-header:hover{background:rgba(255,255,255,.03);}
-.phase-title{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  flex:1;
-  min-width:0;
+.action-bar-label{
+  font-size:.7rem;
+  font-weight:800;
+  letter-spacing:1.5px;
+  color:#6f6789;
+  text-transform:uppercase;
+  margin-right:6px;
 }
-.phase-icon{
-  width:44px;
-  height:44px;
-  border-radius:12px;
-  display:grid;
-  place-items:center;
-  font-size:22px;
-  flex-shrink:0;
+.action-btn{
+  padding:9px 16px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,.12);
   background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.1);
-}
-.phase.done .phase-icon{
-  background:linear-gradient(135deg,#22c55e,#4ade80);
-  border-color:transparent;
-  box-shadow:0 4px 12px rgba(34,197,94,.4);
-}
-.phase.current .phase-icon{
-  background:linear-gradient(135deg,#ffb800,#ff8c42);
-  border-color:transparent;
-  box-shadow:0 4px 12px rgba(255,184,0,.4);
-}
-.phase-title h3{
-  font-family:"Bebas Neue",sans-serif;
-  font-size:1.35rem;
-  letter-spacing:1px;
-  margin-bottom:3px;
   color:#fff;
-}
-.phase-title p{
-  font-size:.72rem;
-  color:#a39bbf;
-  margin:0;
-}
-.phase-status{
-  padding:6px 12px;
-  border-radius:99px;
-  font-size:.6rem;
-  font-weight:800;
-  letter-spacing:1px;
-  text-transform:uppercase;
-  white-space:nowrap;
-}
-.phase-status.done{
-  background:rgba(34,197,94,.15);
-  color:#4ade80;
-  border:1px solid rgba(34,197,94,.4);
-}
-.phase-status.current{
-  background:rgba(255,184,0,.15);
-  color:#ffb800;
-  border:1px solid rgba(255,184,0,.4);
-}
-.phase-status.pending{
-  background:rgba(255,255,255,.05);
-  color:#6f6789;
-  border:1px solid rgba(255,255,255,.1);
-}
-.phase-arrow{
-  color:#6f6789;
-  font-size:20px;
-  transition:transform .3s;
-  flex-shrink:0;
-}
-.phase.open .phase-arrow{transform:rotate(180deg);}
-
-.phase-body{
-  max-height:0;
-  overflow:hidden;
-  transition:max-height .5s ease;
-}
-.phase.open .phase-body{max-height:2000px;}
-.phase-content{
-  padding:0 24px 24px;
-  border-top:1px solid rgba(255,255,255,.05);
-}
-
-/* FEATURE LIST */
-.feature-list{
-  display:grid;
-  gap:6px;
-  margin-top:16px;
-}
-.feature{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:9px 12px;
-  background:rgba(255,255,255,.02);
-  border-radius:8px;
-  font-size:.78rem;
-  transition:.2s;
-}
-.feature:hover{background:rgba(255,255,255,.05);}
-.feature-check{
-  width:18px;
-  height:18px;
-  border-radius:5px;
-  display:grid;
-  place-items:center;
-  font-size:11px;
-  flex-shrink:0;
-  font-weight:900;
-}
-.feature.done .feature-check{
-  background:#22c55e;
-  color:#0a0614;
-}
-.feature.pending .feature-check{
-  background:rgba(255,255,255,.08);
-  border:1.5px dashed rgba(255,255,255,.2);
-}
-.feature.done{color:#fff;}
-.feature.pending{color:#a39bbf;}
-.feature-badge{
-  margin-left:auto;
-  padding:3px 8px;
-  border-radius:99px;
-  font-size:.55rem;
-  font-weight:800;
-  letter-spacing:.5px;
-  background:rgba(255,255,255,.05);
-  color:#6f6789;
-  text-transform:uppercase;
-}
-.feature.done .feature-badge{
-  background:rgba(34,197,94,.15);
-  color:#4ade80;
-}
-
-/* FILES SECTION */
-.files-section{
-  background:rgba(255,255,255,.03);
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:20px;
-  padding:24px;
-  margin-bottom:20px;
-}
-.files-section h2{
-  font-family:"Bebas Neue",sans-serif;
-  font-size:1.6rem;
-  letter-spacing:1px;
-  margin-bottom:18px;
-  color:#ffb800;
-}
-.file-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
-  gap:10px;
-}
-.file-card{
-  padding:12px 14px;
-  background:rgba(255,255,255,.03);
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:12px;
+  font-family:inherit;
   font-size:.75rem;
-  display:flex;
-  justify-content:space-between;
+  font-weight:700;
+  cursor:pointer;
+  transition:.25s;
+  display:inline-flex;
   align-items:center;
-  gap:8px;
-  transition:.2s;
+  gap:6px;
 }
-.file-card:hover{border-color:#ffb800;transform:translateY(-2px);}
-.file-card strong{
-  color:#fff;
-  font-weight:600;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
-  min-width:0;
+.action-btn:hover{
+  border-color:#ffb800;
+  color:#ffb800;
+  transform:translateY(-2px);
 }
-.file-badge{
-  padding:3px 8px;
-  border-radius:99px;
-  font-size:.55rem;
-  font-weight:800;
-  letter-spacing:.5px;
-  background:rgba(34,197,94,.15);
-  color:#4ade80;
-  flex-shrink:0;
+.action-btn.primary{
+  background:linear-gradient(135deg,#ffb800,#ff8c42);
+  color:#0a0614;
+  border-color:transparent;
 }
-.file-badge.pending{
-  background:rgba(255,255,255,.05);
-  color:#6f6789;
+.action-btn.primary:hover{
+  color:#0a0614;
+  box-shadow:0 6px 20px rgba(255,184,0,.4);
+}
+.action-btn.danger{
+  border-color:rgba(239,68,68,.4);
+  color:#ff9b9b;
+}
+.action-btn.danger:hover{
+  border-color:#ef4444;
+  color:#ef4444;
 }
 
 /* INFO BOX */
@@ -378,6 +221,259 @@ body{
   font-weight:800;
 }
 
+/* PHASE */
+.phase{
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:20px;
+  padding:0;
+  margin-bottom:20px;
+  overflow:hidden;
+  transition:.3s;
+}
+.phase.complete{border-color:rgba(34,197,94,.4);}
+.phase.current{border-color:rgba(255,184,0,.4);}
+.phase-header{
+  padding:20px 24px;
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:14px;
+  transition:.2s;
+  user-select:none;
+}
+.phase-header:hover{background:rgba(255,255,255,.03);}
+.phase-title{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  flex:1;
+  min-width:0;
+}
+.phase-icon{
+  width:44px;
+  height:44px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  font-size:22px;
+  flex-shrink:0;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);
+  transition:.3s;
+}
+.phase.complete .phase-icon{
+  background:linear-gradient(135deg,#22c55e,#4ade80);
+  border-color:transparent;
+  box-shadow:0 4px 12px rgba(34,197,94,.4);
+}
+.phase.current .phase-icon{
+  background:linear-gradient(135deg,#ffb800,#ff8c42);
+  border-color:transparent;
+  box-shadow:0 4px 12px rgba(255,184,0,.4);
+}
+.phase-title h3{
+  font-family:"Bebas Neue",sans-serif;
+  font-size:1.35rem;
+  letter-spacing:1px;
+  margin-bottom:3px;
+  color:#fff;
+}
+.phase-title p{
+  font-size:.72rem;
+  color:#a39bbf;
+  margin:0;
+}
+.phase-meta{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-shrink:0;
+}
+.phase-percent{
+  padding:6px 12px;
+  border-radius:99px;
+  font-size:.65rem;
+  font-weight:800;
+  letter-spacing:1px;
+  white-space:nowrap;
+  background:rgba(255,255,255,.05);
+  color:#a39bbf;
+  border:1px solid rgba(255,255,255,.1);
+}
+.phase.complete .phase-percent{
+  background:rgba(34,197,94,.15);
+  color:#4ade80;
+  border-color:rgba(34,197,94,.4);
+}
+.phase.current .phase-percent{
+  background:rgba(255,184,0,.15);
+  color:#ffb800;
+  border-color:rgba(255,184,0,.4);
+}
+.phase-arrow{
+  color:#6f6789;
+  font-size:20px;
+  transition:transform .3s;
+  flex-shrink:0;
+}
+.phase.open .phase-arrow{transform:rotate(180deg);}
+.phase-body{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .5s ease;
+}
+.phase.open .phase-body{max-height:3000px;}
+.phase-content{
+  padding:0 24px 24px;
+  border-top:1px solid rgba(255,255,255,.05);
+}
+
+/* FEATURE LIST */
+.feature-list{
+  display:grid;
+  gap:6px;
+  margin-top:16px;
+}
+.feature{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 12px;
+  background:rgba(255,255,255,.02);
+  border-radius:8px;
+  font-size:.78rem;
+  transition:.2s;
+  cursor:pointer;
+  user-select:none;
+}
+.feature:hover{background:rgba(255,255,255,.05);}
+.feature:active{transform:scale(.99);}
+.feature-check{
+  width:20px;
+  height:20px;
+  border-radius:6px;
+  display:grid;
+  place-items:center;
+  font-size:12px;
+  flex-shrink:0;
+  font-weight:900;
+  transition:.3s cubic-bezier(.34,1.56,.64,1);
+}
+.feature.done .feature-check{
+  background:#22c55e;
+  color:#0a0614;
+  box-shadow:0 0 10px rgba(34,197,94,.5);
+}
+.feature.pending .feature-check{
+  background:rgba(255,255,255,.04);
+  border:1.5px dashed rgba(255,255,255,.25);
+}
+.feature.done{color:#fff;}
+.feature.pending{color:#a39bbf;}
+.feature-badge{
+  margin-left:auto;
+  padding:3px 8px;
+  border-radius:99px;
+  font-size:.55rem;
+  font-weight:800;
+  letter-spacing:.5px;
+  background:rgba(255,255,255,.05);
+  color:#6f6789;
+  text-transform:uppercase;
+  transition:.3s;
+  flex-shrink:0;
+}
+.feature.done .feature-badge{
+  background:rgba(34,197,94,.15);
+  color:#4ade80;
+}
+.feature-name{
+  flex:1;
+  min-width:0;
+}
+
+/* FILES SECTION */
+.files-section{
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:20px;
+  padding:24px;
+  margin-bottom:20px;
+}
+.files-section h2{
+  font-family:"Bebas Neue",sans-serif;
+  font-size:1.6rem;
+  letter-spacing:1px;
+  margin-bottom:18px;
+  color:#ffb800;
+}
+.file-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  gap:10px;
+}
+.file-card{
+  padding:12px 14px;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:12px;
+  font-size:.75rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+  transition:.2s;
+  cursor:pointer;
+  user-select:none;
+}
+.file-card:hover{border-color:#ffb800;transform:translateY(-2px);}
+.file-card strong{
+  color:#fff;
+  font-weight:600;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  min-width:0;
+}
+.file-badge{
+  padding:3px 8px;
+  border-radius:99px;
+  font-size:.55rem;
+  font-weight:800;
+  letter-spacing:.5px;
+  background:rgba(34,197,94,.15);
+  color:#4ade80;
+  flex-shrink:0;
+  transition:.3s;
+}
+.file-card.pending .file-badge{
+  background:rgba(255,255,255,.05);
+  color:#6f6789;
+}
+
+/* TOAST */
+.toast{
+  position:fixed;
+  bottom:24px;
+  left:50%;
+  transform:translateX(-50%) translateY(120px);
+  padding:12px 20px;
+  border-radius:12px;
+  background:linear-gradient(135deg,#ffb800,#ff8c42);
+  color:#0a0614;
+  font-weight:800;
+  font-size:.82rem;
+  box-shadow:0 12px 40px rgba(0,0,0,.5);
+  z-index:9999;
+  transition:transform .4s cubic-bezier(.4,0,.2,1);
+  max-width:90vw;
+  text-align:center;
+  pointer-events:none;
+}
+.toast.on{transform:translateX(-50%) translateY(0);}
+
 /* FOOTER */
 .bp-footer{
   text-align:center;
@@ -397,9 +493,12 @@ body{
   .phase-title h3{font-size:1.1rem;}
   .phase-title p{font-size:.65rem;}
   .phase-icon{width:38px;height:38px;font-size:18px;}
-  .feature{font-size:.7rem;padding:8px 10px;}
+  .feature{font-size:.7rem;padding:9px 10px;}
   .file-grid{grid-template-columns:1fr;}
   .progress-stats{grid-template-columns:1fr;}
+  .action-bar{flex-direction:column;align-items:stretch;}
+  .action-bar-label{text-align:center;margin-right:0;margin-bottom:6px;}
+  .action-btn{justify-content:center;}
 }
 </style>
 </head>
@@ -407,11 +506,10 @@ body{
 
 <div class="wrap">
 
-  <!-- HEADER -->
   <div class="bp-header">
     <h1>🎬 CineVault — Master Blueprint</h1>
     <p>Complete Project Reference & Roadmap</p>
-    <div class="last-update" id="lastUpdate">📅 Updating...</div>
+    <div class="last-update" id="lastUpdate">📅 Loading...</div>
   </div>
 
   <!-- OVERALL PROGRESS -->
@@ -436,223 +534,311 @@ body{
     </div>
   </div>
 
+  <!-- ACTION BAR -->
+  <div class="action-bar">
+    <span class="action-bar-label">Actions</span>
+    <button class="action-btn primary" onclick="exportBlueprint()">📥 Export JSON</button>
+    <button class="action-btn" onclick="importBlueprint()">📤 Import JSON</button>
+    <button class="action-btn" onclick="markAllDone()">✅ Mark All Done</button>
+    <button class="action-btn danger" onclick="resetAll()">🔄 Reset All</button>
+    <input type="file" id="importFile" accept=".json" style="display:none" onchange="handleImport(event)">
+  </div>
+
   <!-- INFO BOX -->
   <div class="info-box">
-    <h3>🎯 How to Use This Blueprint</h3>
+    <h3>🎯 How to Use</h3>
     <ul>
-      <li>Click any phase header to expand/collapse details</li>
-      <li>✅ = Feature complete and working</li>
-      <li>⏳ = Feature pending (will be added)</li>
-      <li>Use this as reference — NOT to be uploaded to GitHub</li>
-      <li>Update this file whenever a new feature is completed</li>
+      <li><strong>Click any feature</strong> to toggle ✅ Done / ⬜ Pending</li>
+      <li>Your progress <strong>auto-saves</strong> in browser (localStorage)</li>
+      <li><strong>Click phase header</strong> to expand/collapse</li>
+      <li><strong>Export JSON</strong> to backup your progress</li>
+      <li><strong>Import JSON</strong> to restore backup on another device</li>
+      <li>This file is for <strong>your reference only</strong> — do NOT upload to GitHub</li>
     </ul>
   </div>
 
-  <!-- PHASES CONTAINER -->
+  <!-- PHASES -->
   <div id="phasesContainer"></div>
 
-  <!-- FILES SECTION -->
+  <!-- FILES -->
   <div class="files-section">
     <h2>📁 Files Status</h2>
     <div class="file-grid" id="fileGrid"></div>
   </div>
 
-  <!-- FOOTER -->
   <div class="bp-footer">
     🎬 <strong>CINEVAULT</strong> — Powered by Shashwat<br>
-    <span style="font-size:.65rem;opacity:.6">Blueprint last generated: <span id="footerDate"></span></span>
+    <span style="font-size:.65rem;opacity:.6">Last updated: <span id="footerDate"></span></span>
   </div>
 
 </div>
 
+<div class="toast" id="toast"></div>
+
 <script>
 /* =========================================================
-   BLUEPRINT DATA
-   Update this object whenever features change
+   BLUEPRINT DATA (Default state)
 ========================================================= */
 
-const PHASES = [
+const DEFAULT_PHASES = [
   {
     id: "phase1",
     icon: "🎞️",
     title: "Phase 1 — Episode System",
     subtitle: "Movies + TV Series with episode tracking",
-    status: "done",
     features: [
-      { name: "TMDB Search (Movies)", status: "done" },
-      { name: "TMDB Search (TV Series)", status: "done" },
-      { name: "Movie Add/Edit/Delete", status: "done" },
-      { name: "Auto-detect Series vs Movie", status: "done" },
-      { name: "Status (Want/Watching/Watched/Dropped)", status: "done" },
-      { name: "Favorites", status: "done" },
-      { name: "Notes (auto-save)", status: "done" },
-      { name: "5-Star Rating", status: "done" },
-      { name: "Episode Tracker (basic)", status: "done" },
-      { name: "Full-Screen Episodes Modal", status: "done" },
-      { name: "Card Series Progress Bar", status: "done" },
-      { name: "Series Info Box (in modal)", status: "done" },
-      { name: "Mark All Watched", status: "done" },
-      { name: "Reset All Episodes", status: "done" },
-      { name: "Add More Episodes", status: "done" },
-      { name: "Episode Rating (per episode)", status: "done" },
-      { name: "Confetti on Series Complete", status: "done" },
-      { name: "Movie/Series Filter Chips", status: "done" },
-      { name: "Sort by Watch Progress", status: "done" },
-      { name: "8 New Animations", status: "done" }
-    ]
+      "TMDB Search (Movies)",
+      "TMDB Search (TV Series)",
+      "Movie Add/Edit/Delete",
+      "Auto-detect Series vs Movie",
+      "Status (Want/Watching/Watched/Dropped)",
+      "Favorites",
+      "Notes (auto-save)",
+      "5-Star Rating",
+      "Episode Tracker (basic)",
+      "Full-Screen Episodes Modal",
+      "Card Series Progress Bar",
+      "Series Info Box (in modal)",
+      "Mark All Watched",
+      "Reset All Episodes",
+      "Add More Episodes",
+      "Episode Rating (per episode)",
+      "Confetti on Series Complete",
+      "Movie/Series Filter Chips",
+      "Sort by Watch Progress",
+      "8 New Animations"
+    ],
+    defaultDone: true
   },
   {
     id: "phase2",
     icon: "💬",
     title: "Phase 2 — Reviews Section",
     subtitle: "Detailed reviews with spoiler toggle",
-    status: "current",
     features: [
-      { name: "Multiple Reviews per Movie/Series", status: "pending" },
-      { name: "Star Rating + Text Review", status: "pending" },
-      { name: "Spoiler Toggle (hide/show)", status: "pending" },
-      { name: "Like/Dislike own reviews", status: "pending" },
-      { name: "Date + Time Stamp", status: "pending" },
-      { name: "Edit/Delete Reviews", status: "pending" },
-      { name: "Beautiful Review Cards", status: "pending" },
-      { name: "Sort Reviews (recent/highest rating)", status: "pending" }
-    ]
+      "Multiple Reviews per Movie/Series",
+      "Star Rating + Text Review",
+      "Spoiler Toggle (hide/show)",
+      "Like/Dislike own reviews",
+      "Date + Time Stamp",
+      "Edit/Delete Reviews",
+      "Beautiful Review Cards",
+      "Sort Reviews (recent/highest rating)"
+    ],
+    defaultDone: true
   },
   {
     id: "phase3",
     icon: "🎨",
     title: "Phase 3 — Visual Enhancements",
     subtitle: "Cinematic look and feel",
-    status: "pending",
     features: [
-      { name: "Backdrop Images in Modal", status: "pending" },
-      { name: "Top Rated Section (Homepage)", status: "pending" },
-      { name: "Trailer Auto-Embed (YouTube Player)", status: "pending" },
-      { name: "Poster Wall View (alternative grid)", status: "pending" },
-      { name: "Genre Gradient Borders", status: "pending" },
-      { name: "Better Loading Skeletons", status: "pending" }
-    ]
+      "Backdrop Images in Modal",
+      "Top Rated Section (Homepage)",
+      "Trailer Auto-Embed (YouTube Player)",
+      "Poster Wall View (alternative grid)",
+      "Genre Gradient Borders",
+      "Better Loading Skeletons"
+    ],
+    defaultDone: true
   },
   {
     id: "phase4",
     icon: "🔍",
     title: "Phase 4 — Discovery Features",
     subtitle: "Explore and find new content",
-    status: "pending",
     features: [
-      { name: "Genre Explorer (browse by genre)", status: "pending" },
-      { name: "Sound Effects (buttons, checkboxes)", status: "pending" },
-      { name: "Recommendations Based on History", status: "pending" },
-      { name: "Trending Now Section", status: "pending" },
-      { name: "More Smooth Animations", status: "pending" }
-    ]
+      "Genre Explorer (browse by genre)",
+      "Sound Effects (buttons, checkboxes)",
+      "Recommendations Based on History",
+      "Trending Now Section",
+      "More Smooth Animations"
+    ],
+    defaultDone: false
   },
   {
     id: "phase5",
     icon: "⚙️",
     title: "Phase 5 — Advanced Tools",
     subtitle: "Power user features",
-    status: "pending",
     features: [
-      { name: "Import from IMDb (CSV upload)", status: "pending" },
-      { name: "Import from Letterboxd", status: "pending" },
-      { name: "Release Calendar (upcoming)", status: "pending" },
-      { name: "Watch Goals (yearly/monthly)", status: "pending" },
-      { name: "Weekly Challenges (gamification)", status: "pending" },
-      { name: "Export to PDF", status: "pending" }
-    ]
+      "Import from IMDb (CSV upload)",
+      "Import from Letterboxd",
+      "Release Calendar (upcoming)",
+      "Watch Goals (yearly/monthly)",
+      "Weekly Challenges (gamification)",
+      "Export to PDF"
+    ],
+    defaultDone: false
   },
   {
     id: "phase6",
     icon: "📱",
     title: "Phase 6 — Pro Features",
     subtitle: "App-like experience",
-    status: "pending",
     features: [
-      { name: "PWA (Install as App)", status: "pending" },
-      { name: "Push Notifications", status: "pending" },
-      { name: "Multi-Language (Hindi + English)", status: "pending" },
-      { name: "Yearly Wrap-Up (Spotify Wrapped style)", status: "pending" },
-      { name: "Friends System", status: "pending" },
-      { name: "Share Individual Reviews", status: "pending" }
-    ]
+      "PWA (Install as App)",
+      "Push Notifications",
+      "Multi-Language (Hindi + English)",
+      "Yearly Wrap-Up (Spotify Wrapped style)",
+      "Friends System",
+      "Share Individual Reviews"
+    ],
+    defaultDone: false
   },
   {
     id: "phase7",
     icon: "⭐",
     title: "Phase 7 — Custom",
     subtitle: "Personal touches",
-    status: "pending",
     features: [
-      { name: "HIGHLY RECOMMENDED Section", status: "pending" },
-      { name: "2 Manual Websites (user pastes)", status: "pending" },
-      { name: "Extra Themes (Tokyo, Paper, VHS, Emerald)", status: "pending" },
-      { name: "Extra Animations (Spring, Ripple, etc.)", status: "pending" },
-      { name: "Custom Cursor Effects", status: "pending" }
-    ]
+      "HIGHLY RECOMMENDED Section",
+      "2 Manual Websites (user pastes)",
+      "Extra Themes (Tokyo, Paper, VHS, Emerald)",
+      "Extra Animations (Spring, Ripple, etc.)",
+      "Custom Cursor Effects"
+    ],
+    defaultDone: false
   }
 ];
 
-const FILES = [
-  { name: "index.html", status: "done" },
-  { name: "styles/main.css", status: "done" },
-  { name: "styles/themes.css", status: "done" },
-  { name: "styles/animations.css", status: "done" },
-  { name: "styles/watch.css", status: "done" },
-  { name: "styles/episodes.css", status: "done" },
-  { name: "scripts/config.js", status: "done" },
-  { name: "scripts/api.js", status: "done" },
-  { name: "scripts/auth.js", status: "done" },
-  { name: "scripts/watch.js", status: "done" },
-  { name: "scripts/app.js", status: "done" },
-  { name: "scripts/episodes.js", status: "done" },
-  { name: "scripts/features.js", status: "done" },
-  { name: "scripts/reviews.js", status: "pending" },
-  { name: "styles/reviews.css", status: "pending" },
-  { name: "manifest.json (PWA)", status: "pending" },
-  { name: "service-worker.js (PWA)", status: "pending" },
-  { name: "scripts/lang.js (Multi-lang)", status: "pending" },
-  { name: "scripts/import.js (IMDb)", status: "pending" }
+const DEFAULT_FILES = [
+  { name: "index.html", done: true },
+  { name: "styles/main.css", done: true },
+  { name: "styles/themes.css", done: true },
+  { name: "styles/animations.css", done: true },
+  { name: "styles/watch.css", done: true },
+  { name: "styles/episodes.css", done: true },
+  { name: "styles/reviews.css", done: true },
+  { name: "styles/visuals.css", done: true },
+  { name: "scripts/config.js", done: true },
+  { name: "scripts/api.js", done: true },
+  { name: "scripts/auth.js", done: true },
+  { name: "scripts/watch.js", done: true },
+  { name: "scripts/app.js", done: true },
+  { name: "scripts/episodes.js", done: true },
+  { name: "scripts/reviews.js", done: true },
+  { name: "scripts/visuals.js", done: true },
+  { name: "scripts/features.js", done: true },
+  { name: "manifest.json (PWA)", done: false },
+  { name: "service-worker.js (PWA)", done: false },
+  { name: "scripts/lang.js (Multi-lang)", done: false },
+  { name: "scripts/import.js (IMDb)", done: false }
 ];
 
 /* =========================================================
-   RENDER FUNCTIONS
+   STATE MANAGEMENT
+========================================================= */
+
+const STORAGE_KEY = "cv_blueprint_state";
+
+let state = {
+  phases: {},
+  files: {}
+};
+
+/* Load state from localStorage */
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) {
+      const saved = JSON.parse(raw);
+      state.phases = saved.phases || {};
+      state.files = saved.files || {};
+    }
+  } catch (e) {
+    console.warn("Could not load state:", e);
+  }
+
+  // Initialize defaults for anything missing
+  DEFAULT_PHASES.forEach(function (phase) {
+    if (!state.phases[phase.id]) {
+      state.phases[phase.id] = {};
+    }
+    phase.features.forEach(function (feature) {
+      if (typeof state.phases[phase.id][feature] === "undefined") {
+        state.phases[phase.id][feature] = phase.defaultDone;
+      }
+    });
+  });
+
+  DEFAULT_FILES.forEach(function (file) {
+    if (typeof state.files[file.name] === "undefined") {
+      state.files[file.name] = file.done;
+    }
+  });
+}
+
+/* Save state to localStorage */
+function saveState() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch (e) {
+    console.warn("Could not save state:", e);
+  }
+}
+
+/* Toggle a feature */
+function toggleFeature(phaseId, featureName) {
+  if (!state.phases[phaseId]) state.phases[phaseId] = {};
+  state.phases[phaseId][featureName] = !state.phases[phaseId][featureName];
+  saveState();
+  renderAll();
+}
+
+/* Toggle a file */
+function toggleFile(fileName) {
+  state.files[fileName] = !state.files[fileName];
+  saveState();
+  renderAll();
+}
+
+/* =========================================================
+   RENDER
 ========================================================= */
 
 function renderPhases() {
   const container = document.getElementById("phasesContainer");
   if (!container) return;
 
-  container.innerHTML = PHASES.map(function (phase, idx) {
-    const doneCount = phase.features.filter(function (f) { return f.status === "done"; }).length;
-    const totalCount = phase.features.length;
+  container.innerHTML = DEFAULT_PHASES.map(function (phase, idx) {
+    const phaseState = state.phases[phase.id] || {};
+    const total = phase.features.length;
+    const done = phase.features.filter(function (f) { return phaseState[f]; }).length;
+    const percent = total > 0 ? Math.round((done / total) * 100) : 0;
+
+    let statusClass = "pending";
+    if (done === total) statusClass = "complete";
+    else if (done > 0) statusClass = "current";
 
     const featuresHTML = phase.features.map(function (f) {
-      const cls = f.status === "done" ? "done" : "pending";
-      const check = f.status === "done" ? "✓" : "";
-      const badge = f.status === "done" ? "Done" : "Pending";
-      return '<div class="feature ' + cls + '">' +
+      const isDone = !!phaseState[f];
+      const cls = isDone ? "done" : "pending";
+      const check = isDone ? "✓" : "";
+      const badge = isDone ? "Done" : "Pending";
+
+      return '<div class="feature ' + cls + '" ' +
+        'onclick="toggleFeature(\'' + phase.id + '\', \'' +
+        f.replace(/'/g, "\\'") + '\')">' +
         '<div class="feature-check">' + check + '</div>' +
-        '<span>' + f.name + '</span>' +
+        '<span class="feature-name">' + f + '</span>' +
         '<span class="feature-badge">' + badge + '</span>' +
       '</div>';
     }).join("");
 
-    const statusLabel = phase.status === "done" ? "Completed" :
-                        phase.status === "current" ? "In Progress" : "Pending";
-    const statusClass = phase.status;
-
-    return '<div class="phase ' + phase.status + (idx === 0 ? " open" : "") + '" data-phase="' + phase.id + '">' +
+    return '<div class="phase ' + statusClass + (idx === 0 ? ' open' : '') + '" data-phase="' + phase.id + '">' +
       '<div class="phase-header" onclick="togglePhase(this)">' +
         '<div class="phase-title">' +
           '<div class="phase-icon">' + phase.icon + '</div>' +
           '<div>' +
             '<h3>' + phase.title + '</h3>' +
-            '<p>' + phase.subtitle + ' • ' + doneCount + '/' + totalCount + ' features</p>' +
+            '<p>' + phase.subtitle + '</p>' +
           '</div>' +
         '</div>' +
-        '<span class="phase-status ' + statusClass + '">' + statusLabel + '</span>' +
-        '<span class="phase-arrow">▼</span>' +
+        '<div class="phase-meta">' +
+          '<span class="phase-percent">' + done + '/' + total + ' (' + percent + '%)</span>' +
+          '<span class="phase-arrow">▼</span>' +
+        '</div>' +
       '</div>' +
       '<div class="phase-body">' +
         '<div class="phase-content">' +
@@ -663,31 +849,30 @@ function renderPhases() {
   }).join("");
 }
 
-function togglePhase(header) {
-  const phase = header.closest(".phase");
-  if (phase) phase.classList.toggle("open");
-}
-
 function renderFiles() {
   const grid = document.getElementById("fileGrid");
   if (!grid) return;
 
-  grid.innerHTML = FILES.map(function (f) {
-    const badgeClass = f.status === "done" ? "file-badge" : "file-badge pending";
-    const badgeText = f.status === "done" ? "✓ Ready" : "⏳ Pending";
-    return '<div class="file-card">' +
+  grid.innerHTML = DEFAULT_FILES.map(function (f) {
+    const isDone = !!state.files[f.name];
+    const cls = isDone ? "" : "pending";
+    const badgeText = isDone ? "✓ Ready" : "⏳ Pending";
+
+    return '<div class="file-card ' + cls + '" onclick="toggleFile(\'' +
+      f.name.replace(/'/g, "\\'") + '\')">' +
       '<strong>' + f.name + '</strong>' +
-      '<span class="' + badgeClass + '">' + badgeText + '</span>' +
+      '<span class="file-badge">' + badgeText + '</span>' +
     '</div>';
   }).join("");
 }
 
 function updateOverallProgress() {
   let total = 0, done = 0;
-  PHASES.forEach(function (p) {
-    p.features.forEach(function (f) {
+  DEFAULT_PHASES.forEach(function (phase) {
+    const phaseState = state.phases[phase.id] || {};
+    phase.features.forEach(function (f) {
       total++;
-      if (f.status === "done") done++;
+      if (phaseState[f]) done++;
     });
   });
 
@@ -706,6 +891,22 @@ function updateOverallProgress() {
   if (totalEl) totalEl.textContent = total;
 }
 
+function renderAll() {
+  renderPhases();
+  renderFiles();
+  updateOverallProgress();
+  setDates();
+}
+
+/* =========================================================
+   UI HELPERS
+========================================================= */
+
+function togglePhase(header) {
+  const phase = header.closest(".phase");
+  if (phase) phase.classList.toggle("open");
+}
+
 function setDates() {
   const now = new Date();
   const formatted = now.toLocaleDateString("en-IN", {
@@ -718,14 +919,105 @@ function setDates() {
   if (footEl) footEl.textContent = formatted;
 }
 
+function showToast(msg) {
+  const t = document.getElementById("toast");
+  if (!t) return;
+  t.textContent = msg;
+  t.classList.add("on");
+  clearTimeout(t._timer);
+  t._timer = setTimeout(function () {
+    t.classList.remove("on");
+  }, 2200);
+}
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+function exportBlueprint() {
+  const data = {
+    exportedAt: new Date().toISOString(),
+    app: "CineVault Blueprint",
+    version: "1.0",
+    state: state
+  };
+
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "cinevault-blueprint-" + Date.now() + ".json";
+  a.click();
+  setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+  showToast("📥 Blueprint exported!");
+}
+
+function importBlueprint() {
+  const input = document.getElementById("importFile");
+  if (input) input.click();
+}
+
+function handleImport(event) {
+  const file = event.target.files && event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    try {
+      const data = JSON.parse(e.target.result);
+      if (data.state) {
+        state = data.state;
+        saveState();
+        renderAll();
+        showToast("📤 Blueprint imported!");
+      } else {
+        showToast("❌ Invalid blueprint file");
+      }
+    } catch (err) {
+      console.error(err);
+      showToast("❌ Could not read file");
+    }
+  };
+  reader.readAsText(file);
+  event.target.value = "";
+}
+
+function markAllDone() {
+  if (!confirm("Mark ALL features as done? This will replace your current progress.")) return;
+
+  DEFAULT_PHASES.forEach(function (phase) {
+    if (!state.phases[phase.id]) state.phases[phase.id] = {};
+    phase.features.forEach(function (f) {
+      state.phases[phase.id][f] = true;
+    });
+  });
+
+  DEFAULT_FILES.forEach(function (file) {
+    state.files[file.name] = true;
+  });
+
+  saveState();
+  renderAll();
+  showToast("✅ All marked done!");
+}
+
+function resetAll() {
+  if (!confirm("Reset ALL progress? This will clear everything.")) return;
+
+  state.phases = {};
+  state.files = {};
+  saveState();
+  loadState();
+  renderAll();
+  showToast("🔄 Blueprint reset!");
+}
+
 /* =========================================================
    INIT
 ========================================================= */
 document.addEventListener("DOMContentLoaded", function () {
-  renderPhases();
-  renderFiles();
-  updateOverallProgress();
-  setDates();
+  loadState();
+  renderAll();
 });
 </script>
 
