@@ -553,7 +553,6 @@ body{
       <li><strong>Click phase header</strong> to expand/collapse</li>
       <li><strong>Export JSON</strong> to backup your progress</li>
       <li><strong>Import JSON</strong> to restore backup on another device</li>
-      <li>This file is for <strong>your reference only</strong> — do NOT upload to GitHub</li>
     </ul>
   </div>
 
@@ -577,7 +576,7 @@ body{
 
 <script>
 /* =========================================================
-   BLUEPRINT DATA (Default state)
+   BLUEPRINT DATA (Latest Updates Included)
 ========================================================= */
 
 const DEFAULT_PHASES = [
@@ -587,26 +586,13 @@ const DEFAULT_PHASES = [
     title: "Phase 1 — Episode System",
     subtitle: "Movies + TV Series with episode tracking",
     features: [
-      "TMDB Search (Movies)",
-      "TMDB Search (TV Series)",
-      "Movie Add/Edit/Delete",
-      "Auto-detect Series vs Movie",
-      "Status (Want/Watching/Watched/Dropped)",
-      "Favorites",
-      "Notes (auto-save)",
-      "5-Star Rating",
-      "Episode Tracker (basic)",
-      "Full-Screen Episodes Modal",
-      "Card Series Progress Bar",
-      "Series Info Box (in modal)",
-      "Mark All Watched",
-      "Reset All Episodes",
-      "Add More Episodes",
-      "Episode Rating (per episode)",
-      "Confetti on Series Complete",
-      "Movie/Series Filter Chips",
-      "Sort by Watch Progress",
-      "8 New Animations"
+      "TMDB Search (Movies)", "TMDB Search (TV Series)", "Movie Add/Edit/Delete",
+      "Auto-detect Series vs Movie", "Status (Want/Watching/Watched/Dropped)",
+      "Favorites", "Notes (auto-save)", "5-Star Rating", "Episode Tracker (basic)",
+      "Full-Screen Episodes Modal", "Card Series Progress Bar", "Series Info Box (in modal)",
+      "Mark All Watched", "Reset All Episodes", "Add More Episodes",
+      "Episode Rating (per episode)", "Confetti on Series Complete",
+      "Movie/Series Filter Chips", "Sort by Watch Progress", "8 New Animations"
     ],
     defaultDone: true
   },
@@ -616,13 +602,9 @@ const DEFAULT_PHASES = [
     title: "Phase 2 — Reviews Section",
     subtitle: "Detailed reviews with spoiler toggle",
     features: [
-      "Multiple Reviews per Movie/Series",
-      "Star Rating + Text Review",
-      "Spoiler Toggle (hide/show)",
-      "Like/Dislike own reviews",
-      "Date + Time Stamp",
-      "Edit/Delete Reviews",
-      "Beautiful Review Cards",
+      "Multiple Reviews per Movie/Series", "Star Rating + Text Review",
+      "Spoiler Toggle (hide/show)", "Like/Dislike own reviews",
+      "Date + Time Stamp", "Edit/Delete Reviews", "Beautiful Review Cards",
       "Sort Reviews (recent/highest rating)"
     ],
     defaultDone: true
@@ -633,12 +615,9 @@ const DEFAULT_PHASES = [
     title: "Phase 3 — Visual Enhancements",
     subtitle: "Cinematic look and feel",
     features: [
-      "Backdrop Images in Modal",
-      "Top Rated Section (Homepage)",
-      "Trailer Auto-Embed (YouTube Player)",
-      "Poster Wall View (alternative grid)",
-      "Genre Gradient Borders",
-      "Better Loading Skeletons"
+      "Backdrop Images in Modal", "Top Rated Section (Homepage)",
+      "Trailer Auto-Embed (YouTube Player)", "Poster Wall View (alternative grid)",
+      "Genre Gradient Borders", "Better Loading Skeletons"
     ],
     defaultDone: true
   },
@@ -648,13 +627,11 @@ const DEFAULT_PHASES = [
     title: "Phase 4 — Discovery Features",
     subtitle: "Explore and find new content",
     features: [
-      "Genre Explorer (browse by genre)",
-      "Sound Effects (buttons, checkboxes)",
-      "Recommendations Based on History",
-      "Trending Now Section",
+      "Genre Explorer (browse by genre)", "Sound Effects (buttons, checkboxes)",
+      "Recommendations Based on History", "Trending Now Section",
       "More Smooth Animations"
     ],
-    defaultDone: false
+    defaultDone: true
   },
   {
     id: "phase5",
@@ -662,12 +639,9 @@ const DEFAULT_PHASES = [
     title: "Phase 5 — Advanced Tools",
     subtitle: "Power user features",
     features: [
-      "Import from IMDb (CSV upload)",
-      "Import from Letterboxd",
-      "Release Calendar (upcoming)",
-      "Watch Goals (yearly/monthly)",
-      "Weekly Challenges (gamification)",
-      "Export to PDF"
+      "Import from IMDb (CSV upload)", "Import from Letterboxd",
+      "Release Calendar (upcoming)", "Watch Goals (yearly/monthly)",
+      "Weekly Challenges (gamification)", "Export to PDF"
     ],
     defaultDone: false
   },
@@ -677,12 +651,9 @@ const DEFAULT_PHASES = [
     title: "Phase 6 — Pro Features",
     subtitle: "App-like experience",
     features: [
-      "PWA (Install as App)",
-      "Push Notifications",
-      "Multi-Language (Hindi + English)",
-      "Yearly Wrap-Up (Spotify Wrapped style)",
-      "Friends System",
-      "Share Individual Reviews"
+      "PWA (Install as App)", "Push Notifications",
+      "Multi-Language (Hindi + English)", "Yearly Wrap-Up (Spotify Wrapped style)",
+      "Friends System", "Share Individual Reviews"
     ],
     defaultDone: false
   },
@@ -692,18 +663,30 @@ const DEFAULT_PHASES = [
     title: "Phase 7 — Custom",
     subtitle: "Personal touches",
     features: [
-      "HIGHLY RECOMMENDED Section",
-      "2 Manual Websites (user pastes)",
-      "Extra Themes (Tokyo, Paper, VHS, Emerald)",
-      "Extra Animations (Spring, Ripple, etc.)",
+      "HIGHLY RECOMMENDED Section", "2 Manual Websites (user pastes)",
+      "Extra Themes (Tokyo, Paper, VHS, Emerald)", "Extra Animations (Spring, Ripple, etc.)",
       "Custom Cursor Effects"
     ],
     defaultDone: false
+  },
+  {
+    id: "phase8",
+    icon: "🛡️",
+    title: "Phase 8 — Security & Maintenance",
+    subtitle: "Keeping the app safe & up-to-date",
+    features: [
+      "API Key Proxy on Render (Optional)", "Firestore Security Rules",
+      "Filename Fix (ads.js)", "Genre Filter Fix (Bug fix)",
+      "FilmyFly Ads Integration (Modal + Homepage)"
+    ],
+    defaultDone: true
   }
 ];
 
 const DEFAULT_FILES = [
   { name: "index.html", done: true },
+  { name: "manifest.json", done: true },
+  { name: "service-worker.js", done: true },
   { name: "styles/main.css", done: true },
   { name: "styles/themes.css", done: true },
   { name: "styles/animations.css", done: true },
@@ -711,6 +694,11 @@ const DEFAULT_FILES = [
   { name: "styles/episodes.css", done: true },
   { name: "styles/reviews.css", done: true },
   { name: "styles/visuals.css", done: true },
+  { name: "styles/discovery.css", done: true },
+  { name: "styles/advanced.css", done: true },
+  { name: "styles/pro.css", done: true },
+  { name: "styles/custom.css", done: true },
+  { name: "styles/ads.css", done: true },
   { name: "scripts/config.js", done: true },
   { name: "scripts/api.js", done: true },
   { name: "scripts/auth.js", done: true },
@@ -719,25 +707,21 @@ const DEFAULT_FILES = [
   { name: "scripts/episodes.js", done: true },
   { name: "scripts/reviews.js", done: true },
   { name: "scripts/visuals.js", done: true },
-  { name: "scripts/features.js", done: true },
-  { name: "manifest.json (PWA)", done: false },
-  { name: "service-worker.js (PWA)", done: false },
-  { name: "scripts/lang.js (Multi-lang)", done: false },
-  { name: "scripts/import.js (IMDb)", done: false }
+  { name: "scripts/sounds.js", done: true },
+  { name: "scripts/discovery.js", done: true },
+  { name: "scripts/advanced.js", done: true },
+  { name: "scripts/pro.js", done: true },
+  { name: "scripts/custom.js", done: true },
+  { name: "scripts/ads.js", done: true },
+  { name: "scripts/features.js", done: true }
 ];
 
 /* =========================================================
    STATE MANAGEMENT
 ========================================================= */
-
 const STORAGE_KEY = "cv_blueprint_state";
+let state = { phases: {}, files: {} };
 
-let state = {
-  phases: {},
-  files: {}
-};
-
-/* Load state from localStorage */
 function loadState() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -746,22 +730,15 @@ function loadState() {
       state.phases = saved.phases || {};
       state.files = saved.files || {};
     }
-  } catch (e) {
-    console.warn("Could not load state:", e);
-  }
-
-  // Initialize defaults for anything missing
+  } catch (e) {}
   DEFAULT_PHASES.forEach(function (phase) {
-    if (!state.phases[phase.id]) {
-      state.phases[phase.id] = {};
-    }
+    if (!state.phases[phase.id]) state.phases[phase.id] = {};
     phase.features.forEach(function (feature) {
       if (typeof state.phases[phase.id][feature] === "undefined") {
         state.phases[phase.id][feature] = phase.defaultDone;
       }
     });
   });
-
   DEFAULT_FILES.forEach(function (file) {
     if (typeof state.files[file.name] === "undefined") {
       state.files[file.name] = file.done;
@@ -769,16 +746,10 @@ function loadState() {
   });
 }
 
-/* Save state to localStorage */
 function saveState() {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-  } catch (e) {
-    console.warn("Could not save state:", e);
-  }
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
 }
 
-/* Toggle a feature */
 function toggleFeature(phaseId, featureName) {
   if (!state.phases[phaseId]) state.phases[phaseId] = {};
   state.phases[phaseId][featureName] = !state.phases[phaseId][featureName];
@@ -786,7 +757,6 @@ function toggleFeature(phaseId, featureName) {
   renderAll();
 }
 
-/* Toggle a file */
 function toggleFile(fileName) {
   state.files[fileName] = !state.files[fileName];
   saveState();
@@ -796,7 +766,6 @@ function toggleFile(fileName) {
 /* =========================================================
    RENDER
 ========================================================= */
-
 function renderPhases() {
   const container = document.getElementById("phasesContainer");
   if (!container) return;
@@ -806,7 +775,6 @@ function renderPhases() {
     const total = phase.features.length;
     const done = phase.features.filter(function (f) { return phaseState[f]; }).length;
     const percent = total > 0 ? Math.round((done / total) * 100) : 0;
-
     let statusClass = "pending";
     if (done === total) statusClass = "complete";
     else if (done > 0) statusClass = "current";
@@ -816,10 +784,7 @@ function renderPhases() {
       const cls = isDone ? "done" : "pending";
       const check = isDone ? "✓" : "";
       const badge = isDone ? "Done" : "Pending";
-
-      return '<div class="feature ' + cls + '" ' +
-        'onclick="toggleFeature(\'' + phase.id + '\', \'' +
-        f.replace(/'/g, "\\'") + '\')">' +
+      return '<div class="feature ' + cls + '" onclick="toggleFeature(\'' + phase.id + '\', \'' + f.replace(/'/g, "\\'") + '\')">' +
         '<div class="feature-check">' + check + '</div>' +
         '<span class="feature-name">' + f + '</span>' +
         '<span class="feature-badge">' + badge + '</span>' +
@@ -830,21 +795,16 @@ function renderPhases() {
       '<div class="phase-header" onclick="togglePhase(this)">' +
         '<div class="phase-title">' +
           '<div class="phase-icon">' + phase.icon + '</div>' +
-          '<div>' +
-            '<h3>' + phase.title + '</h3>' +
-            '<p>' + phase.subtitle + '</p>' +
-          '</div>' +
+          '<div><h3>' + phase.title + '</h3><p>' + phase.subtitle + '</p></div>' +
         '</div>' +
         '<div class="phase-meta">' +
           '<span class="phase-percent">' + done + '/' + total + ' (' + percent + '%)</span>' +
           '<span class="phase-arrow">▼</span>' +
         '</div>' +
       '</div>' +
-      '<div class="phase-body">' +
-        '<div class="phase-content">' +
-          '<div class="feature-list">' + featuresHTML + '</div>' +
-        '</div>' +
-      '</div>' +
+      '<div class="phase-body"><div class="phase-content">' +
+        '<div class="feature-list">' + featuresHTML + '</div>' +
+      '</div></div>' +
     '</div>';
   }).join("");
 }
@@ -852,14 +812,11 @@ function renderPhases() {
 function renderFiles() {
   const grid = document.getElementById("fileGrid");
   if (!grid) return;
-
   grid.innerHTML = DEFAULT_FILES.map(function (f) {
     const isDone = !!state.files[f.name];
     const cls = isDone ? "" : "pending";
     const badgeText = isDone ? "✓ Ready" : "⏳ Pending";
-
-    return '<div class="file-card ' + cls + '" onclick="toggleFile(\'' +
-      f.name.replace(/'/g, "\\'") + '\')">' +
+    return '<div class="file-card ' + cls + '" onclick="toggleFile(\'' + f.name.replace(/'/g, "\\'") + '\')">' +
       '<strong>' + f.name + '</strong>' +
       '<span class="file-badge">' + badgeText + '</span>' +
     '</div>';
@@ -875,20 +832,12 @@ function updateOverallProgress() {
       if (phaseState[f]) done++;
     });
   });
-
   const percent = total > 0 ? Math.round((done / total) * 100) : 0;
-
-  const fill = document.getElementById("overallFill");
-  const percentEl = document.getElementById("overallPercent");
-  const doneEl = document.getElementById("doneCount");
-  const pendingEl = document.getElementById("pendingCount");
-  const totalEl = document.getElementById("totalCount");
-
-  if (fill) fill.style.width = percent + "%";
-  if (percentEl) percentEl.textContent = percent + "%";
-  if (doneEl) doneEl.textContent = done;
-  if (pendingEl) pendingEl.textContent = (total - done);
-  if (totalEl) totalEl.textContent = total;
+  document.getElementById("overallFill").style.width = percent + "%";
+  document.getElementById("overallPercent").textContent = percent + "%";
+  document.getElementById("doneCount").textContent = done;
+  document.getElementById("pendingCount").textContent = (total - done);
+  document.getElementById("totalCount").textContent = total;
 }
 
 function renderAll() {
@@ -901,7 +850,6 @@ function renderAll() {
 /* =========================================================
    UI HELPERS
 ========================================================= */
-
 function togglePhase(header) {
   const phase = header.closest(".phase");
   if (phase) phase.classList.toggle("open");
@@ -913,10 +861,8 @@ function setDates() {
     day: "numeric", month: "long", year: "numeric",
     hour: "2-digit", minute: "2-digit"
   });
-  const lastEl = document.getElementById("lastUpdate");
-  const footEl = document.getElementById("footerDate");
-  if (lastEl) lastEl.textContent = "📅 " + formatted;
-  if (footEl) footEl.textContent = formatted;
+  document.getElementById("lastUpdate").textContent = "📅 " + formatted;
+  document.getElementById("footerDate").textContent = formatted;
 }
 
 function showToast(msg) {
@@ -925,23 +871,19 @@ function showToast(msg) {
   t.textContent = msg;
   t.classList.add("on");
   clearTimeout(t._timer);
-  t._timer = setTimeout(function () {
-    t.classList.remove("on");
-  }, 2200);
+  t._timer = setTimeout(function () { t.classList.remove("on"); }, 2200);
 }
 
 /* =========================================================
    ACTIONS
 ========================================================= */
-
 function exportBlueprint() {
   const data = {
     exportedAt: new Date().toISOString(),
     app: "CineVault Blueprint",
-    version: "1.0",
+    version: "2.0",
     state: state
   };
-
   const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
@@ -952,15 +894,11 @@ function exportBlueprint() {
   showToast("📥 Blueprint exported!");
 }
 
-function importBlueprint() {
-  const input = document.getElementById("importFile");
-  if (input) input.click();
-}
+function importBlueprint() { document.getElementById("importFile").click(); }
 
 function handleImport(event) {
   const file = event.target.files && event.target.files[0];
   if (!file) return;
-
   const reader = new FileReader();
   reader.onload = function (e) {
     try {
@@ -970,40 +908,27 @@ function handleImport(event) {
         saveState();
         renderAll();
         showToast("📤 Blueprint imported!");
-      } else {
-        showToast("❌ Invalid blueprint file");
-      }
-    } catch (err) {
-      console.error(err);
-      showToast("❌ Could not read file");
-    }
+      } else { showToast("❌ Invalid blueprint file"); }
+    } catch (err) { showToast("❌ Could not read file"); }
   };
   reader.readAsText(file);
   event.target.value = "";
 }
 
 function markAllDone() {
-  if (!confirm("Mark ALL features as done? This will replace your current progress.")) return;
-
+  if (!confirm("Mark ALL features as done?")) return;
   DEFAULT_PHASES.forEach(function (phase) {
     if (!state.phases[phase.id]) state.phases[phase.id] = {};
-    phase.features.forEach(function (f) {
-      state.phases[phase.id][f] = true;
-    });
+    phase.features.forEach(function (f) { state.phases[phase.id][f] = true; });
   });
-
-  DEFAULT_FILES.forEach(function (file) {
-    state.files[file.name] = true;
-  });
-
+  DEFAULT_FILES.forEach(function (file) { state.files[file.name] = true; });
   saveState();
   renderAll();
   showToast("✅ All marked done!");
 }
 
 function resetAll() {
-  if (!confirm("Reset ALL progress? This will clear everything.")) return;
-
+  if (!confirm("Reset ALL progress?")) return;
   state.phases = {};
   state.files = {};
   saveState();
